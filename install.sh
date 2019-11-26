@@ -18,9 +18,7 @@ function linux_depends(){
                 python3-dev libusbmuxd4 libreadline6-dev libusb-dev \
                 libzip-dev libssl-dev sshpass m4 bsdiff qemu uml-utilities virt-manager dmg2img git wget libguestfs-tools
                 sudo apt-get build-dep
-                sudo dpkg -i multiarch-support_2.29-0ubuntu2_amd64.deb
-                sudo dpkg -i libssl1.0.0_1.0.1t-1+deb8u12_amd64.deb
-                sudo dpkg -i libzip4_1.0.1-0ubuntu1_amd64.deb
+                
         else
                 echo "Package manager is not supported"
                 exit 1
