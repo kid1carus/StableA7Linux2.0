@@ -118,7 +118,7 @@
 				fi
 
 				./img4tool -e --iv f2aa35f6e27c409fd57e9b711f416cfe --key 599d9b18bc51d93f2385fa4e83539a2eec955fce5f4ae960b252583fcbebfe75 -o iBSS.raw iBSS.iphone6.RELEASE.im4p
-				./img4tool1 -e --iv 75a06e85e2d9835827334738bb84ce73 --key 15c61c585d30ab07497f68aee0a64c433e4b1183abde4cfd91c185b9a70ab91a -o iBEC.raw iBEC.iphone6.RELEASE.im4p
+				./img4tool -e --iv 75a06e85e2d9835827334738bb84ce73 --key 15c61c585d30ab07497f68aee0a64c433e4b1183abde4cfd91c185b9a70ab91a -o iBEC.raw iBEC.iphone6.RELEASE.im4p
 				./maloader/ld-mac maloader/iBoot64Patcher iBSS.raw iBSS.prepatched
 				./maloader/ld-mac maloader/iBoot64Patcher iBEC.raw iBEC.prepatched
 				./img4tool -c iBSS.im4p -t ibss iBSS.prepatched
