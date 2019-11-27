@@ -17,7 +17,7 @@ What do you need to install?
 
 git clone https://github.com/twilightmoon4/StableA7Linux2.0.git
 
-cd StableA7Linux
+cd StableA7Linux2.0
 
 sudo apt-get update
 
