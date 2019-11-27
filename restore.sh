@@ -116,17 +116,8 @@
 				else
 					cp -rv ipsw/Firmware/all_flash/sep-firmware.n53.RELEASE.im4p .
 				fi
-
-				./img4tool -e --iv f2aa35f6e27c409fd57e9b711f416cfe --key 599d9b18bc51d93f2385fa4e83539a2eec955fce5f4ae960b252583fcbebfe75 -o iBSS.raw iBSS.iphone6.RELEASE.im4p
-				./img4tool -e --iv 75a06e85e2d9835827334738bb84ce73 --key 15c61c585d30ab07497f68aee0a64c433e4b1183abde4cfd91c185b9a70ab91a -o iBEC.raw iBEC.iphone6.RELEASE.im4p
-				./maloader/ld-mac maloader/iBoot64Patcher iBSS.raw iBSS.prepatched
-				./maloader/ld-mac maloader/iBoot64Patcher iBEC.raw iBEC.prepatched
-				./img4tool -c iBSS.im4p -t ibss iBSS.prepatched
-				./img4tool -c iBEC.im4p -t ibec iBEC.prepatched
-				tsschecker -d "$device" -i 10.3.3 -o -m manifests/BuildManifest_"$device"_1033_OTA.plist -e $ecid -s --save-path shsh
-				mv -v shsh/*.shsh2 shsh/stitch.shsh2
-				img4tool -c iBSS.img4 -p iBSS.im4p -s shsh/stitch.shsh2 
-				img4tool -c iBEC.img4 -p iBEC.im4p -s shsh/stitch.shsh2
+                bspatch iBSS.iphone6.RELEASE.im4p iBSS.img4 patch/ibss_iphone6.patch
+                bspatch iBEC.iphone6.RELEASE.im4p iBEC.img4 patch/ibec_iphone6.patch
 				cp -v iBSS.img4 ipsw/Firmware/dfu/iBSS.iphone6.RELEASE.im4p
 				cp -v iBEC.img4 ipsw/Firmware/dfu/iBEC.iphone6.RELEASE.im4p
 			fi
@@ -147,12 +138,8 @@
 					cp -rv ipsw/Firmware/all_flash/sep-firmware.j73.RELEASE.im4p .
 				fi 
 
-				./img4tool -e --iv a83dfcc277766ccb5da4220811ec2407 --key b4f8d062a97628231a289ae2a50647c309c43030577dca7fc2eee3a13ddb51ea -o iBEC.raw iBEC.ipad4.RELEASE.im4p
-				./maloader/ld-mac maloader/iBoot64Patcher iBEC.raw iBEC.prepatched 
-				./img4tool -c iBEC.im4p -t ibec iBEC.prepatched
-                ./img4tool -e --iv 28eed0b4cada986cee0ec95350b64f04 --key c8b8f09e4cc888e4d0045145bceebb3783e146d56393ffce3268aae3225af3d7 -o iBSS.raw iBSS.ipad4.RELEASE.im4p
-                ./maloader/ld-mac maloader/iBoot64Patcher iBSS.raw iBSS.prepatched
-                ./img4tool -c iBSS.im4p -t ibss iBSS.prepatched
+			   bspatch iBSS.ipad4.RELEASE.im4p iBSS.img4 patch/ibss_ipad4.patch
+                bspatch iBEC.ipad4.RELEASE.im4p iBEC.img4 patch/ibec_ipad4.patch
 
                 if [ $device == iPad4,3 ]; then
                     tsschecker -d "$device" --boardconfig j73AP -i 10.3.3 -o -m manifests/BuildManifest_"$device"_1033_OTA.plist -e $ecid -s --save-path shsh
@@ -162,9 +149,7 @@
                 fi
 
 				mv -v shsh/*.shsh2 shsh/stitch.shsh2 
-				img4tool -c iBEC.img4 -p iBEC.im4p -s shsh/stitch.shsh2 
 				cp -v iBEC.img4 ipsw/Firmware/dfu/iBEC.ipad4.RELEASE.im4p
-                img4tool -c iBSS.img4 -p iBSS.im4p -s shsh/stitch.shsh2
                 cp -v iBSS.img4 ipsw/Firmware/dfu/iBSS.ipad4.RELEASE.im4p
 			fi
 
@@ -178,17 +163,13 @@
 					cp -rv ipsw/Firmware/all_flash/sep-firmware.j86.RELEASE.im4p .
 				fi
 
-				./img4tool -e --iv 3067a2585100890afd3b266926ac254b --key dcdf5a9eb3ae0464e984333e15876faa116525ca4b61f361283a808ca09c7480 -o iBEC.raw iBEC.ipad4b.RELEASE.im4p
-				./maloader/ld-mac maloader/iBoot64Patcher iBEC.raw iBEC.prepatched 
-				./img4tool -c iBEC.im4p -t ibec iBEC.prepatched
-                ./img4tool -e --iv b3aafc6e758290c3aeec057105d16b36 --key 77659e333d13ebb5ad804daf4fbbaf4a9c86bc6065e88ac0190df8c119a916f3 -o iBSS.raw iBSS.ipad4b.RELEASE.im4p
-               ./maloader/ld-mac maloader/iBoot64Patcher iBSS.raw iBSS.prepatched
-                ./img4tool -c iBSS.im4p -t ibss iBSS.prepatched
+				bspatch iBSS.ipad4b.RELEASE.im4p iBSS.img4 patch/ibss_ipad4b.patch
+                bspatch iBEC.ipad4b.RELEASE.im4p iBEC.img4 patch/ibec_ipad4b.patch
                 tsschecker -d "$device" -i 10.3.3 -o -m manifests/BuildManifest_"$device"_1033_OTA.plist -e $ecid -s --save-path shsh
 				mv -v shsh/*.shsh2 shsh/stitch.shsh2 
-				img4tool -c iBEC.img4 -p iBEC.im4p -s shsh/stitch.shsh2 
+				
 				cp -v iBEC.img4 ipsw/Firmware/dfu/iBEC.ipad4b.RELEASE.im4p
-                img4tool -c iBSS.img4 -p iBSS.im4p -s shsh/stitch.shsh2
+                
                 cp -v iBSS.img4 ipsw/Firmware/dfu/iBSS.ipad4b.RELEASE.im4p
 			fi
 

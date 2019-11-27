@@ -89,7 +89,7 @@ function build_libimobiledevice(){
        mkdir build
        cd build
         libs=( "libplist" "libusbmuxd" "usbmuxd" "libirecovery" \
-                "ideviceinstaller" "libideviceactivation" "idevicerestore" "ifuse" )
+                "ideviceinstaller" "libideviceactivation""ifuse" )
 
         buildlibs() { 
                  
@@ -107,17 +107,7 @@ function build_libimobiledevice(){
                         cd ..
                   
                 done 
-                git clone http://github.com/s0uthwest/libimobiledevice.git
-                        cd libimobiledevice
-                        echo -e "\033[1;32mConfiguring $i..."
-                        ./autogen.sh
-                        ./configure
-                        echo -e "\033[1;32mBuilding $i..."
-                        make
-                        
-                         echo -e "\033[1;32mInstalling $i..."
-                        sudo make install
-                        cd ..
+                
                 
         }
 
@@ -135,5 +125,5 @@ elif [[ $(uname) == 'Darwin' ]]; then
         macos_depends
 fi
 build_libimobiledevice
-	sudo ldconfig
+	
 echo -e "\033[1;32m[+]Libimobiledevice successfully installed thanks for using this script"
