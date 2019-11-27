@@ -89,7 +89,7 @@ function build_libimobiledevice(){
        mkdir build
        cd build
         libs=( "libplist" "libusbmuxd" "usbmuxd" "libirecovery" \
-                "ideviceinstaller" "libideviceactivation""ifuse" )
+                "ideviceinstaller" "libideviceactivation" "ifuse" )
 
         buildlibs() { 
                  
