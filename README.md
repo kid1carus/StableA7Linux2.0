@@ -27,6 +27,8 @@ chmod +x *
 
 ./prep.sh (run 2x per warranty)
 
+sudo ldconfig
+
 => And then place IPSW without renaming in the folder where install.sh and restore.sh
 
 => run on terminal :
