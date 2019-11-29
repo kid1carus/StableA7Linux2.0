@@ -1,6 +1,8 @@
 # StableA7Linux for iOS10.3.3
 I come here to release you my beta of the StableA7 port for Linux
 
+Warning: apparently doesn't work on ipads, only iphones
+
 Is downgrade for iOS10.3.3 in A7 idevices
 
 What do you need to install?
@@ -23,9 +25,9 @@ sudo apt-get update
 
 chmod +x *
 
-./install.sh (run 2x per warranty)
+sudo bash install.sh (run 2x per warranty)
 
-./prep.sh (run 2x per warranty)
+sudo bash prep.sh (run 2x per warranty)
 
 sudo ldconfig
 
